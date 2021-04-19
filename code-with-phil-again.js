@@ -12,7 +12,11 @@ function solution(str, ending){
 // arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
 function arrayDiff(a, b) {
-  return a.map(nA => {
-    return b.filter(nB => nA === nB)
-  })
+  return a.filter(nA => !b.includes(nA))
+}
+
+function arrayDiff(a, b) {
+  return b.map(nA => {
+     return a.filter(nB => nA !== nB)
+  }).shift()
 }
