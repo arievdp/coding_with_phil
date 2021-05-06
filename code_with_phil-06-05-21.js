@@ -14,17 +14,31 @@ var arie = {
 // input  ["2016.img1","2016.img2","2015.img3","2016.img4","2013.img5"])
 // output ["2013.img5","2015.img3","2016.img1","2016.img2","2016.img4","2016.img5"]
 
-// sortPhotos["2016.img1"]) ==["2016.img1","2016.img2"]
+// sortPhotos(["2016.img1"]) ==["2016.img1","2016.img2"]
 
-function sortPhotos(pics){
+// sortPhotos(["2016.img1","2016.img2","2015.img3","2016.img4","2013.img5"])
+
+function sortPhotos(pics) {
   //Make room for an amazing photo!
+  var lastArrayValue = ""
 
-  return pics.map(pic => {
-    // nameArray = // regex pattern to extract numbers in array like [num1, num2]
-    // sort by the join(".") of nameArray [num1.num2]
-    // [num1.num2]split.(".").join(".img")
-    // return nameArray
-  }).slice(pics.length -5)
+  ar1 = pics.map(pic => {
+    return pic.match(/\d+/g)
+  })
+  
+  debugger
+  // .sort((el1, el2) => el1.join(".") - el2.join("."))
+  // .slice(pics.length -5)
+  // .map((pic, i) => {
+  //   if (i===pics.length -1) {
+  //     lastArrayValue = [pics[i][0], parseInt(pic[i][1]) + 1].join(".img")
+  //   }
+  //   return pic.join(".img")
+  // })
+}
+
+
+ // nameArray[1] = parseInt(nameArray[1]) + 1
 
   // sortedArray = pics.sort().slice(pics.length -5)
 
@@ -37,10 +51,6 @@ function sortPhotos(pics){
   // newImgName = imgNameArray.join("")
   // fileNameArray[1] = newImgName
   // sortedArray.push(fileNameArray.join("."))
-
-  return sortedArray
-};
-
 
 describe("Basic Tests",() =>{
   Test.assertSimilar(sortPhotos(["2016.img1","2016.img2","2016.img3","2016.img4","2016.img5"]),["2016.img1","2016.img2","2016.img3","2016.img4","2016.img5","2016.img6"]);
