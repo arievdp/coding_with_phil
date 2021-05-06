@@ -11,46 +11,38 @@ var arie = {
 }
 
 
-// input  ["2016.img1","2016.img2","2015.img3","2016.img4","2013.img5"])
-// output ["2013.img5","2015.img3","2016.img1","2016.img2","2016.img4","2016.img5"]
-
-// sortPhotos(["2016.img1"]) ==["2016.img1","2016.img2"]
-
-// sortPhotos(["2016.img1","2016.img2","2015.img3","2016.img4","2013.img5"])
-
 function sortPhotos(pics) {
-  //Make room for an amazing photo!
-  var lastArrayValue = ""
-
-  ar1 = pics.map(pic => {
+  // Capture numbers in string and sort resulting array
+  sortedPics = pics.map(pic => {
     return pic.match(/\d+/g)
+  }).sort().slice(pics.length -5)
+
+  // Duplicate last array element
+  sortedPics.push(sortedPics[sortedPics.length -1])
+
+  // Join array elements with ".img", increment last array elements value
+  return sortedPics.map((pic, i) => {
+    if (i === sortedPics.length -1) {
+      pic[1] = parseInt(pic[1]) + 1
+    }
+    return pic.join(".img")
   })
-  
-  debugger
-  // .sort((el1, el2) => el1.join(".") - el2.join("."))
-  // .slice(pics.length -5)
-  // .map((pic, i) => {
-  //   if (i===pics.length -1) {
-  //     lastArrayValue = [pics[i][0], parseInt(pic[i][1]) + 1].join(".img")
-  //   }
-  //   return pic.join(".img")
-  // })
 }
 
+// Old code:
+    // nameArray[1] = parseInt(nameArray[1]) + 1
 
- // nameArray[1] = parseInt(nameArray[1]) + 1
+    // sortedArray = pics.sort().slice(pics.length -5)
 
-  // sortedArray = pics.sort().slice(pics.length -5)
-
-  // Under here is wrong:
-  // fileNameArray = sortedArray[sortedArray.length -1].split(".")
-  // imgNameArray = fileNameArray[1].split("")
-  // imgNum = parseInt(imgNameArray[imgNameArray.length -1]) + 1
-  // imgNameArray.pop()
-  // imgNameArray.push(imgNum)
-  // newImgName = imgNameArray.join("")
-  // fileNameArray[1] = newImgName
-  // sortedArray.push(fileNameArray.join("."))
+    // Under here is wrong:
+    // fileNameArray = sortedArray[sortedArray.length -1].split(".")
+    // imgNameArray = fileNameArray[1].split("")
+    // imgNum = parseInt(imgNameArray[imgNameArray.length -1]) + 1
+    // imgNameArray.pop()
+    // imgNameArray.push(imgNum)
+    // newImgName = imgNameArray.join("")
+    // fileNameArray[1] = newImgName
+    // sortedArray.push(fileNameArray.join("."))
 
 describe("Basic Tests",() =>{
   Test.assertSimilar(sortPhotos(["2016.img1","2016.img2","2016.img3","2016.img4","2016.img5"]),["2016.img1","2016.img2","2016.img3","2016.img4","2016.img5","2016.img6"]);
