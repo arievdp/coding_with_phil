@@ -43,4 +43,10 @@ describe("Tests", () => {
   Base 2 = binary
   Base 10 = decimal number system
   Base 16, multiply the power of 16
+
+  AF3 = 2803
+
+  16(2) 16(1) 16(0)
+  A     F     3
+  2560  240   3
 */
